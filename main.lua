@@ -1,3 +1,5 @@
+love.window.setTitle( "minecraft v2" )
+
 playerHealth = 100
 playerMaxHealth = 100
 
@@ -61,6 +63,22 @@ function think()
 
     if dead == true then
     	playerHealth = 0
+    end
+
+    if playerx <= 10 then
+    	playerx = playerx + 1
+    end
+
+    if playerx >= 790 then
+    	playerx = playerx - 1
+    end
+
+    if playery <= 10 then
+    	playery = playery + 1
+    end
+
+    if playery >= 590 then
+    	playery = playery - 1
     end
 end
 
