@@ -1,3 +1,60 @@
+playerx = 2
+playery = 50
+playerHealth = 100
+playerMaxHealth = 100
+
+move_up = 0
+move_down = 0
+move_left = 0
+move_right = 0
+
+function love.load()
+    love.keyboard.setKeyRepeat(true)
+end
+
+function love.keypressed(key, isrepeat)
+    if key == "up" then
+        move_up = 1
+    end
+    if key == "down" then
+        move_down = 1
+    end
+    if key == "right" then
+        move_right = 1
+    end
+    if key == "left" then
+        move_left = 1
+    end
+end
+
+
+function love.keyreleased(key)
+    if key == "up" then
+        move_up = 0
+    end
+    if key == "down" then
+        move_down = 0
+    end
+    if key == "right" then
+        move_right = 0
+    end
+    if key == "left" then
+        move_left = 0
+    end
+end
+
 function love.draw()
-	love.graphics.print("test", 400, 300)
+    playery = playery - move_up
+    playery = playery + move_down
+    playerx = playerx - move_left
+    playerx = playerx + move_right
+
+    love.graphics.setColor(255, 255, 255)
+    love.graphics.circle("fill", playerx, playery, 10, 10)
+
+    love.graphics.setColor(255,255,255)
+    love.graphics.print("X: ".. playerx.. ", Y: ".. playery, 2, 2)
+
+    love.graphics.setColor(255,20,20)
+    love.graphics.print("HP: ".. playerHealth, 2, 20)
 end
